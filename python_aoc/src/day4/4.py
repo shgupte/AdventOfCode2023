@@ -1,3 +1,5 @@
+# This code is heretical with respect to all principle of programming
+
 def solution1():
     path = "python_aoc/src/day4/lottery.txt"
     file = open(path, "r")
@@ -19,6 +21,7 @@ class Card:
         lines = file.readlines()
         file.close()
         self.card_number = number
+        self.won_cards = []
         self.my_nums = set(map(int, lines[number - 1].split(":")[1].split("|")[0].split()))
         self.winning_nums = set(map(int, lines[number - 1].split(":")[1].split("|")[1].split()))
         self.points = len(self.my_nums.intersection(self.winning_nums))
@@ -30,17 +33,31 @@ class Card:
         return temp
 
 
-class solution:
-    def __init__(self):
-        self.total = 0
-        self.card_list = []
-    
-    def getTotalCards(self, input):
-        
+def get_card_count(input_card):
+    card = input_card
+    remaining_prizes = card.prize_cards()
+    if len(remaining_prizes) == 0:
+        return 1
+    for r in remaining_prizes:
+        card = Card(r)
+        remaining_prizes += card.prize_cards()
+    remaining_prizes.sort()
+    print(remaining_prizes)
+    print("final cards " + str(len(remaining_prizes)))
+    return len(remaining_prizes) + 1
 
 
-sol = solution()
-sol.getTotalCards(Card(1))
+def solution2():
+    sum = 0
+    for i in range(1, 219):
+        print(i)
+        sum += get_card_count(Card(i))
+    print(sum)
+
+def test():
+   list = [1, 2, 3, 4]
+   list.pop(0)
+   print(list)
 
 
-
+solution2()
