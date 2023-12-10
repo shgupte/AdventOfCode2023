@@ -4,8 +4,8 @@ def reverse(input):
 
 def lookForNum(input):
     for i in range(len(input)):
-        value = ord(input[i]) - 48
-        if (value <= 9 and value >= 0):
+        value = input[i]
+        if value.isdigit():
             return ord(input[i]) - 48
         else:
             continue

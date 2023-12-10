@@ -32,10 +32,3 @@ def dayTwo1():
     print(total)
 
 dayTwo1()
-                     
-
-
-
-    # Record ID
-    # split by semicolon
-    # 
