@@ -15,3 +15,8 @@ def extractNumber(line, index):
         num += int(int(digits[i]) * pow(10, int(len(digits) - i - 1)))
     return num
 
+def extractInput(path) -> list:
+    path = "python_aoc/src/day10/maze.txt"
+    file = open(path, "r")
+    return file.readlines()
+

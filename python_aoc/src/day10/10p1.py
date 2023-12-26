@@ -8,7 +8,7 @@ def solution_1():
     last = start
     steps = 0
     while (cur != start or steps == 0):
-        #Manually entering first move
+        # Manually entering first move
         if cur == start:
             cur = addVec(cur, [0, -1])
             last = start
@@ -27,7 +27,6 @@ def search_s(matrix) -> list:
         for j, column in enumerate(row):
             if column == 'S':
                 return [i, j]
-    return ValueError
 
 def addVec(a, b) -> list:
     return [a[0] + b[0], a[1] + b[1]]
@@ -58,17 +57,17 @@ def getAreaInRow(matrix, indexes) -> int:
     row = []
     segments_passed = 0
     last_pipe = ''
-    print(indexes)
     for i, row in enumerate(matrix):
+        segments_passed = 0
         for j, r in enumerate(row):
             if [i, j] in indexes:
                 if r == 'J' and last_pipe == 'F':
                     segments_passed += 1
-                elif r == '7' and last_pipe == 'L':
+                if r == '7' and last_pipe == 'L':
                     segments_passed += 1
-                elif r == '|':
+                if r == '|':
                     segments_passed += 1
-                elif r not in ['-', 'J', '7', '|']:
+                if r not in ['-', 'J', '7', '|']:
                     last_pipe = r               
             elif segments_passed % 2 == 1:
                 area += 1
